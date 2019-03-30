@@ -11,6 +11,11 @@ import argparse
 
 TIMEOUT = 5
 
+parser = argparse.ArgumentParser()
+parser.add_argument('-i', help='url or target ip string', type=str, default=None)
+parser.add_argument('-p', help='port number', type=int, default=None)
+args = parser.parse_args()
+
 
 def detect_port(ip, port):
     try:
@@ -19,12 +24,17 @@ def detect_port(ip, port):
         conn.settimeout(TIMEOUT)
         result = conn.connect_ex((ip, int(port)))
         if result == 0:
-            print '%s port %d opened' % (ip, port)
+            print '%s %d open' % (ip, port)
         else:
-            print '%s port %d closed' % (ip, port)
+            print '%s %d close' % (ip, port)
             conn.close()
     except:
-        print '%s port %d closed' % (ip, port)
+        print '%s %d close' % (ip, port)
+
 
 if __name__ == '__main__':
-    detect_port('www.google.com', 53)
+    args = parser.parse_args()
+    try:
+        detect_port(args.i, args.p)
+    except:
+        print('please read README.md example')
