@@ -37,4 +37,4 @@ if __name__ == '__main__':
     try:
         detect_port(args.i, args.p)
     except:
-        print('please read README.md example')
+        print('please read README.md')
