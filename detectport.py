@@ -11,6 +11,7 @@ import argparse
 
 TIMEOUT = 5
 
+
 def detect_port(ip, port):
     try:
         conn = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -26,4 +27,4 @@ def detect_port(ip, port):
         print '%s port %d closed' % (ip, port)
 
 if __name__ == '__main__':
-    detect_port('www.baidu.com', 53)
+    detect_port('www.google.com', 53)
